@@ -11,6 +11,8 @@ typedef struct {
   double e[3];
 } vec3;
 
+typedef vec3 point3;
+
 inline double vec3_x(vec3 v) { return v.e[0]; }
 inline double vec3_y(vec3 v) { return v.e[1]; }
 inline double vec3_z(vec3 v) { return v.e[2]; }
