@@ -8,3 +8,7 @@ build:
 .PHONY: run
 run:
 	@./$(O)
+
+.PHONY: format
+format:
+	clang-format -i ./*.c ./*.h
