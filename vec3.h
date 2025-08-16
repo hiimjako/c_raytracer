@@ -8,20 +8,16 @@
  * Represents a 3D vector.
  */
 typedef struct {
-  double e[3];
+  double x, y, z;
 } vec3;
 
 typedef vec3 point3;
 
-inline double vec3_x(vec3 v) { return v.e[0]; }
-inline double vec3_y(vec3 v) { return v.e[1]; }
-inline double vec3_z(vec3 v) { return v.e[2]; }
-
 /*
  * Creates and initializes a vec3 with the given components.
  */
-inline vec3 vec3_create(double e0, double e1, double e2) {
-  vec3 v = {{e0, e1, e2}};
+inline vec3 vec3_create(double x, double y, double z) {
+  vec3 v = {x, y, z};
   return v;
 }
 
@@ -34,28 +30,28 @@ inline vec3 vec3_create_zero() { return vec3_create(0.0, 0.0, 0.0); }
  * Adds two vectors component-wise.
  */
 inline vec3 vec3_add(vec3 u, vec3 v) {
-  return vec3_create(u.e[0] + v.e[0], u.e[1] + v.e[1], u.e[2] + v.e[2]);
+  return vec3_create(u.x + v.x, u.y + v.y, u.z + v.z);
 }
 
 /*
  * Subtracts two vectors component-wise.
  */
 inline vec3 vec3_subtract(vec3 u, vec3 v) {
-  return vec3_create(u.e[0] - v.e[0], u.e[1] - v.e[1], u.e[2] - v.e[2]);
+  return vec3_create(u.x - v.x, u.y - v.y, u.z - v.z);
 }
 
 /*
  * Multiplies two vectors component-wise.
  */
 inline vec3 vec3_multiply(vec3 u, vec3 v) {
-  return vec3_create(u.e[0] * v.e[0], u.e[1] * v.e[1], u.e[2] * v.e[2]);
+  return vec3_create(u.x * v.x, u.y * v.y, u.z * v.z);
 }
 
 /*
  * Scales a vector by a scalar value.
  */
 inline vec3 vec3_scale(vec3 v, double t) {
-  return vec3_create(t * v.e[0], t * v.e[1], t * v.e[2]);
+  return vec3_create(t * v.x, t * v.y, t * v.z);
 }
 
 /*
@@ -72,16 +68,15 @@ inline vec3 vec3_negate(vec3 v) { return vec3_scale(v, -1.0); }
  * Computes the dot product of two vectors.
  */
 inline double vec3_dot(vec3 u, vec3 v) {
-  return u.e[0] * v.e[0] + u.e[1] * v.e[1] + u.e[2] * v.e[2];
+  return u.x * v.x + u.y * v.y + u.z * v.z;
 }
 
 /*
  * Computes the cross product of two vectors.
  */
 inline vec3 vec3_cross(vec3 u, vec3 v) {
-  return vec3_create(u.e[1] * v.e[2] - u.e[2] * v.e[1],
-                     u.e[2] * v.e[0] - u.e[0] * v.e[2],
-                     u.e[0] * v.e[1] - u.e[1] * v.e[0]);
+  return vec3_create(u.y * v.z - u.z * v.y, u.z * v.x - u.x * v.z,
+                     u.x * v.y - u.y * v.x);
 }
 
 /*
@@ -103,7 +98,7 @@ inline vec3 vec3_unit_vector(vec3 v) { return vec3_divide(v, vec3_length(v)); }
  * Prints the components of a vector to a specified file stream.
  */
 inline void vec3_print(FILE *stream, vec3 v) {
-  fprintf(stream, "%f %f %f", v.e[0], v.e[1], v.e[2]);
+  fprintf(stream, "%f %f %f", v.x, v.y, v.z);
 }
 
 #endif

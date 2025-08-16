@@ -17,7 +17,7 @@ color3 ray_color(const ray r) {
     return vec3_create(1, 0, 0);
 
   vec3 unit_direction = vec3_unit_vector(r.direction);
-  double a = 0.5 * (vec3_y(unit_direction) + 1.0);
+  double a = 0.5 * (unit_direction.y + 1.0);
   double scaled_a = (1.0 - a);
 
   // lerp interpolation function
