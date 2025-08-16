@@ -3,8 +3,8 @@
 
 #include "vec3.h"
 
-typedef vec3 color3;
+typedef Vec3 Color3;
 
-void write_color(FILE *stream, const color3 pixel_color);
+void write_color(FILE *stream, const Color3 pixel_color);
 
 #endif

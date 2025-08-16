@@ -4,15 +4,15 @@
 #include "vec3.h"
 
 typedef struct {
-  vec3 origin;
-  vec3 direction;
-} ray;
+  Vec3 origin;
+  Vec3 direction;
+} Ray;
 
 /**
  * Creates and initializes a ray from an origin point and a direction vector.
  */
-inline ray ray_create(vec3 origin, vec3 direction) {
-  ray r = {origin, direction};
+inline Ray ray_create(Vec3 origin, Vec3 direction) {
+  Ray r = {origin, direction};
   return r;
 }
 
@@ -20,8 +20,8 @@ inline ray ray_create(vec3 origin, vec3 direction) {
  * Computes the point on the ray at a given parameter 't'.
  * This is equivalent to `origin + t*direction`.
  */
-inline vec3 ray_at(ray r, double t) {
-  vec3 scaled_direction = vec3_scale(r.direction, t);
+inline Vec3 ray_at(Ray r, double t) {
+  Vec3 scaled_direction = vec3_scale(r.direction, t);
   return vec3_add(r.origin, scaled_direction);
 }
 

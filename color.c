@@ -1,6 +1,6 @@
 #include "color.h"
 
-void write_color(FILE *stream, const color3 pixel_color) {
+void write_color(FILE *stream, const Color3 pixel_color) {
   double r = pixel_color.x;
   double g = pixel_color.y;
   double b = pixel_color.z;
